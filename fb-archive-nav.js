@@ -39,6 +39,8 @@ function identity() {
 	delete name;
 	delete split;
 	delete asides;
+	// removing "you've" from another string:
+	document.getElementsByClassName("_a70f")[0].innerHTML="Photos, videos, text and status updates shared on Facebook";
 }
 
 function yearNav() {
@@ -59,7 +61,6 @@ function yearNav() {
 	for (const year of tmp.sort()) years.add(year);
 	var navHTML = "<p/>";
 	years.forEach(year => {
-		console.log("cycling");
 		if (selectedYear() !== year) {
 			navHTML += " [<a href=\"" + location.pathname + "?year=" + year + "\">" + year + "</a>] ";
 		} else {
@@ -82,9 +83,9 @@ function order() {
 function hideEmpty() {
 	// There are "a few" (more than 1000, on my archive) sections with only one <div class="_2pin">, and where that div is empty.
 	// In those cases, we want to hide that entire section...
-	// TODO: There might be more cases... I'm seeing instances where the only
-	//       'real content' in the section is the message that it was 'Updated
-	//       <timestamp>', we might want to hide those too...
+	// TODO: There are more cases... I'm seeing instances where the only 'real
+	//       content' in the section is the message that it was 'Updated
+	//       <timestamp>', we'll want those hidden too...
 	const sections = document.querySelectorAll('section');
 	sections.forEach(section => {
 		const pinDivs = section.querySelectorAll('div._2pin');
@@ -110,8 +111,13 @@ function showFooter() {
 	delete footerElement;
 }
 
+function stripDyi() {
+	// Leave the text on those links but remove the anchors
+	// TODO
+}
+
 // can have a boolean parameter - if false, the footer won't be shown
-function fbArchiveNav(footer) {
+function fbArchiveNav(footer, dyi) {
 	// According to the README, this is this script achieves:
 	// * You want to announce it as your activity, not the readers;
 	identity();
@@ -123,6 +129,8 @@ function fbArchiveNav(footer) {
 	order();
 	// * footer of the page something about the navigator
 	if (typeof(footer) === 'undefined' || footer) showFooter();
+	// * removal of dyi (download your information) links
+	if (typeof(footer) === 'undefined' || dyi) stripDyi();
 	// FIXME: this is quite innefecient: each of these functions will cycle
 	// through everything (at least once) and we'll be doing it over and over
 	// again... Once this is implemented, let's optimize it!

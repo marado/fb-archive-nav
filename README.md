@@ -44,3 +44,4 @@ Not everything is implemented already...
 - [x] year navigation
 - [x] hiding empty entries
 - [ ] chronologic order
+- [ ] strip DYI links
