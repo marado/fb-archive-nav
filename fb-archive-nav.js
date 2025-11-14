@@ -67,8 +67,11 @@ function order() {
 }
 
 function hideEmpty() {
-	// There are "a few" (more than 1000) sections with only one <div class="_2pin">, and where that div is empty.
+	// There are "a few" (more than 1000, on my archive) sections with only one <div class="_2pin">, and where that div is empty.
 	// In those cases, we want to hide that entire section...
+	// TODO: There might be more cases... I'm seeing instances where the only
+	//       'real content' in the section is the message that it was 'Updated
+	//       <timestamp>', we might want to hide those too...
 	const sections = document.querySelectorAll('section');
 	sections.forEach(section => {
 		const pinDivs = section.querySelectorAll('div._2pin');
@@ -88,8 +91,10 @@ function hideEmpty() {
 }
 
 function showFooter() {
-	// TODO
-	console.log("in the future, a footer will have info about this script being in use.");
+	var footerElement = document.createElement("footer");
+	footerElement.innerHTML = "<div id=\"footer\" style=\"text-align:center;\">This archive's navigation is powered by <a href=\"https://github.com/marado/fb-archive-nav\">fb-archive-nav</a>.</div>";
+	document.body.appendChild(footerElement);
+	delete footerElement;
 }
 
 // can have a boolean parameter - if false, the footer won't be shown
