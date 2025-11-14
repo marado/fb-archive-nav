@@ -54,8 +54,18 @@ function yearNav() {
 		}
 	});
 	for (const year of tmp.sort()) years.add(year);
-	// console.log(years);
-	// TODO: create a navbar for the years
+	var navHTML = "<p/>";
+	years.forEach(year => {
+		console.log("cycling");
+		if (selectedYear() !== year) {
+			navHTML += " [<a href=\"" + location.pathname + "?year=" + year + "\">" + year + "</a>] ";
+		} else {
+			navHTML += " [" + year + "] ";
+		}
+	});
+	const asides = document.querySelectorAll('aside');
+	asides[0].innerHTML += navHTML;
+	delete asides;
 	delete tmp;
 	delete sections;
 	delete filterByYear;
@@ -108,7 +118,7 @@ function fbArchiveNav(footer) {
 	hideEmpty();
 	// * You want the page data to be shown in chronologic order...
 	order();
-	// let's also have on the footer of the page something about the navigator
+	// * footer of the page something about the navigator
 	if (typeof(footer) === 'undefined' || footer) showFooter();
 	// FIXME: this is quite innefecient: each of these functions will cycle
 	// through everything (at least once) and we'll be doing it over and over
