@@ -30,7 +30,7 @@ NOTE: this script is Licensed as AGPLv3.
 
 Not everything is implemented already...
 
-[ ] identity
+[x] identity
 [ ] year navigation
 [x] hiding empty entries
 [ ] chronologic order
