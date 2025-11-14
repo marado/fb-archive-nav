@@ -18,10 +18,19 @@ Add this line to the head of the page:
 ```
 Change the body tag `<body class="_5vb_ _2yq _a7o5">` to say, instead,
 ```
-<body class="_5vb_ _2yq _a7o5" onLoad="fb-archive-nav();">
+<body class="_5vb_ _2yq _a7o5" onLoad="fbArchiveNav();">
 ```
 
 And of course, have that html file and the `fb-archive-nav.js` file from this
 repository together in the same directory. That's it, have fun!
 
 NOTE: this script is Licensed as AGPLv3.
+
+### status
+
+Not everything is implemented already...
+
+[ ] identity
+[ ] year navigation
+[x] hiding empty entries
+[ ] chronologic order
