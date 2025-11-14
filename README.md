@@ -21,10 +21,20 @@ Change the body tag `<body class="_5vb_ _2yq _a7o5">` to say, instead,
 <body class="_5vb_ _2yq _a7o5" onLoad="fbArchiveNav();">
 ```
 
+One of the things the script does is to add in the page's footer a brief
+indication that it is being used. If you don't want that to show, no problem:
+just call it with `fbArchiveNav(false)` instead.
+
 And of course, have that html file and the `fb-archive-nav.js` file from this
 repository together in the same directory. That's it, have fun!
 
-NOTE: this script is Licensed as AGPLv3.
+**Note:** The HTML file in question assumes you have
+`../../your_facebook_activity/posts/media` in your path, you might need to pay
+attention to that if you want to move the html file around.
+
+### License
+
+This script is Licensed as AGPLv3.
 
 ### status
 
