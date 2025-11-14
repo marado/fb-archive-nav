@@ -34,7 +34,7 @@ attention to that if you want to move the html file around.
 
 ### License
 
-This script is Licensed as AGPLv3.
+This script is licensed as [AGPLv3](LICENSE).
 
 ### status
 

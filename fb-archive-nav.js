@@ -1,11 +1,14 @@
-// This file is Licensed as AGPLv3
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-3.0
+//
+// fb-archive-nav.js is free software: you can redistribute it and/or modify it
+// under the terms of the GNU Affero General Public License as published by the
+// Free Software Foundation, either version 3 of the License, or (at your
+// option) any later version.
+//
 // (c) Marcos Marado <mindboosternoori@gmail.com>, 2025
 //
-// The latest version of it can probably be found at
+// The latest version of the software can probably be found at
 // https://github.com/marado/fb-archive-nav
-
-// TODO: include the actual license
-// TODO: tag the license as free according to GNU's LibreJS guidelines
 
 // Note: this script was made using only one archive as an example. It assumes
 // things that might not be entirely correct. For eg:
@@ -124,3 +127,4 @@ function fbArchiveNav(footer) {
 	// through everything (at least once) and we'll be doing it over and over
 	// again... Once this is implemented, let's optimize it!
 }
+// @license-end" 
