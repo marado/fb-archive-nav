@@ -77,7 +77,24 @@ function yearNav() {
 }
 
 function order() {
-	// TODO
+	const sections = document.querySelectorAll('section');
+	var newSections = {};
+	sections.forEach(section => {
+		// see if the section has style.display none, because if it has, we can just skip it
+		if (section.style.display !== 'none') { // section to display
+			const dDivs = section.querySelectorAll('div._a72d'); // the timestamp divs! every section has one and only one
+		    const dDiv = dDivs[0];
+		    const date = dDiv.textContent.trim();
+			var dateIdx = new Date(date).valueOf();
+			while (typeof(newSections[dateIdx]) !== 'undefined') ++dateIdx; // avoiding collisions
+			newSections[dateIdx] = section;
+		}
+	});
+	var main = document.createElement("main");
+	Object.keys(newSections).sort().reduce((obj, key) => {
+		main.appendChild(newSections[key]);
+	},{});
+	document.body.getElementsByClassName('_a705')[0].replaceChild(main, document.querySelectorAll('main')[0]);
 }
 
 function hideEmpty() {
