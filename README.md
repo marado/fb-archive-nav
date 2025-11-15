@@ -41,13 +41,3 @@ attention to that if you want to move the html file around.
 ### License
 
 This script is licensed as [AGPLv3](LICENSE).
-
-### status
-
-Not everything is implemented already...
-
-- [x] identity
-- [x] year navigation
-- [x] hiding empty entries (with an exception to 'updated, but empty' entries, for now)
-- [ ] chronologic order
-- [x] strip DYI links

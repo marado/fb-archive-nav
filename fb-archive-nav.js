@@ -81,20 +81,32 @@ function order() {
 }
 
 function hideEmpty() {
-	// There are "a few" (more than 1000, on my archive) sections with only one <div class="_2pin">, and where that div is empty.
-	// In those cases, we want to hide that entire section...
-	// TODO: There are more cases... I'm seeing instances where the only 'real
-	//       content' in the section is the message that it was 'Updated
-	//       <timestamp>', we'll want those hidden too...
 	const sections = document.querySelectorAll('section');
 	sections.forEach(section => {
 		const pinDivs = section.querySelectorAll('div._2pin');
-		// TODO: validate if this is the right assumption. What if there are several pinDivs and all of them are empty?
+		// There are "a few" (more than 1000, on my archive) sections with only one <div class="_2pin">, and where that div is empty.
+		// In those cases, we want to hide that entire section...
 		if (pinDivs.length === 1) {
 			const pinDiv = pinDivs[0];
 			const isEmpty = ((pinDiv.textContent.trim() === "") && (pinDiv.children.length === 1));
 			if (isEmpty) {
 				section.style.display = "none";
+			}
+			delete isEmpty;
+			delete pinDiv;
+		} else if (pinDivs.length === 2) {
+			// is one empty and the other an update string? If so, hide it too
+			const pinDiv = pinDivs[0];
+			const isEmpty = ((pinDiv.textContent.trim() === "") && (pinDiv.children.length === 1));
+			if (isEmpty) {
+				// And update string goes more or less like this: "Updated Feb 25, 2025 7:48:26 pm"
+				// We're going to assume that any string that is 40 characters or less and starts with "Updated " is one.
+				const testString = pinDivs[1].textContent.trim();
+				if (testString.startsWith("Updated ") && (testString.length <= 40)) {
+					// consider this an update string, and this section one that should be hidden
+					section.style.display = "none";
+				}
+				delete testString;
 			}
 			delete isEmpty;
 			delete pinDiv;
@@ -121,7 +133,11 @@ function stripDyi() {
 	delete footers;
 }
 
-// can have a boolean parameter - if false, the footer won't be shown
+// FIXME: this is quite innefecient: some of the functions called will cycle
+//        through everything (at least once) and we'll be doing it over and over
+//        again... Once this is implemented, let's optimize it!
+// footer boolean parameter - if exists and false, the footer won't be shown
+// dyi    boolean parameter - if exists and false, the dyi links won't be stripped
 function fbArchiveNav(footer, dyi) {
 	// According to the README, this is this script achieves:
 	// * You want to announce it as your activity, not the readers;
@@ -136,8 +152,5 @@ function fbArchiveNav(footer, dyi) {
 	if (typeof(footer) === 'undefined' || footer) showFooter();
 	// * removal of dyi (download your information) links
 	if (typeof(footer) === 'undefined' || dyi) stripDyi();
-	// FIXME: this is quite innefecient: each of these functions will cycle
-	// through everything (at least once) and we'll be doing it over and over
-	// again... Once this is implemented, let's optimize it!
 }
 // @license-end" 
