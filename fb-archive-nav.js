@@ -133,7 +133,7 @@ function stripDyi() {
 	delete footers;
 }
 
-// FIXME: this is quite innefecient: some of the functions called will cycle
+// FIXME: this is quite inefficient: some of the functions called will cycle
 //        through everything (at least once) and we'll be doing it over and over
 //        again... Once this is implemented, let's optimize it!
 // footer boolean parameter - if exists and false, the footer won't be shown
