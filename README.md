@@ -48,6 +48,6 @@ Not everything is implemented already...
 
 - [x] identity
 - [x] year navigation
-- [x] hiding empty entries
+- [x] hiding empty entries (with an exception to 'updated, but empty' entries, for now)
 - [ ] chronologic order
 - [x] strip DYI links
