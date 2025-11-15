@@ -25,6 +25,12 @@ One of the things the script does is to add in the page's footer a brief
 indication that it is being used. If you don't want that to show, no problem:
 just call it with `fbArchiveNav(false)` instead.
 
+Likewise, if you want this for purely internal consumption, you might not want
+to strip the diy links. If that's the case, you can add a second boolean
+argument as false: `fbArchiveNav(false, false)` for no footer nor dyi links
+surpression, or `fbArchiveNav(true, false)` if you want the footer but not the
+link surpression.
+
 And of course, have that html file and the `fb-archive-nav.js` file from this
 repository together in the same directory. That's it, have fun!
 
@@ -44,4 +50,4 @@ Not everything is implemented already...
 - [x] year navigation
 - [x] hiding empty entries
 - [ ] chronologic order
-- [ ] strip DYI links
+- [x] strip DYI links

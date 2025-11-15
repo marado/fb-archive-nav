@@ -105,7 +105,7 @@ function hideEmpty() {
 }
 
 function showFooter() {
-	var footerElement = document.createElement("footer");
+	var footerElement = document.createElement("pagefooter");
 	footerElement.innerHTML = "<div id=\"footer\" style=\"text-align:center;\">This archive's navigation is powered by <a href=\"https://github.com/marado/fb-archive-nav\">fb-archive-nav</a>.</div>";
 	document.body.appendChild(footerElement);
 	delete footerElement;
@@ -113,7 +113,12 @@ function showFooter() {
 
 function stripDyi() {
 	// Leave the text on those links but remove the anchors
-	// TODO
+	const footers = document.querySelectorAll('footer');
+	footers.forEach(footer => {
+		const date = footer.querySelectorAll('a')[0].innerHTML;
+		footer.innerHTML = date;
+	});
+	delete footers;
 }
 
 // can have a boolean parameter - if false, the footer won't be shown
